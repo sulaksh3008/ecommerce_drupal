@@ -1,0 +1,10 @@
+<?php
+
+function movie_directory_theme()
+{
+    return [
+        'movie-listing' => [
+            'variables' => ['content' => [], 'title' => ""]
+        ]
+    ];
+}

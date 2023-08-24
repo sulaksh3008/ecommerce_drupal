@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecommerce Page</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  
+<style>
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    font-size: 24px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input[type="text"] {
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    background-color: #f90;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.cart {
+    font-size: 16px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    /* Set a fixed height for the product card */
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card img {
+    width: 100px; /* Adjust image width as needed */
+    height: 100px; /* Adjust image height as needed */
+    border-radius: 50%; /* Make the image circular */
+    margin: 0 auto; /* Center the image */
+    object-fit: cover; /* Cover the container while maintaining aspect ratio */
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 18px; /* Adjust title font size as needed */
+    margin-top: 10px;
+    line-height: 1.2; /* Adjust line spacing as needed */
+}
+
+.price {
+    font-weight: bold;
+    color: #f90;
+    margin-top: 10px;
+}
+
+.add-to-cart {
+    background-color: #f90;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* Additional style to truncate long descriptions */
+.product-card p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Show up to 3 lines of text */
+    -webkit-box-orient: vertical;
+}
+
+.rating {
+    display: inline-block;
+    font-size: 16px;
+    color: #FFD700; /* Star color */
+}
+
+.star {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url('./star.png'); /* Replace with your star image URL */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+
+</style> 
+  <body>
+    <header class="header">
+        <div class="logo">Ecart</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for products...">
+            <button>Search</button>
+        </div>
+        <div class="cart">Cart (0)</div>
+    </header>
+
+    <div class="container">
+        <div class="product-list">
+            {% for item in content %}
+                <div class="product-card">
+                    <img src="{{ item.image }}" alt="{{ item.title }}">
+                    <h2>{{ item.title }}</h2>
+                   
+                    <p class="price">${{ item.price }}</p>
+                    <p>{{ item.description }}</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2023 Your Company. All rights reserved.</p>
+    </footer>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
